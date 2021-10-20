@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { AuthService } from './serveces/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/serveces/auth.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
 })
-export class AppComponent {
+export class RegisterComponent {
   user = {
     email: '',
     password: '',
@@ -14,11 +14,11 @@ export class AppComponent {
 
   constructor(private authService: AuthService) {}
 
-  Ingresar() {
+  Registrar() {
     console.log(this.user);
 
     const { email, password } = this.user;
-    this.authService.login(email, password).then((res) => {
+    this.authService.register(email, password).then((res) => {
       console.log('Se registro: ', res);
     });
   }
@@ -27,8 +27,5 @@ export class AppComponent {
     this.authService.getUserLogged().subscribe((res) => {
       console.log(res?.email);
     });
-  }
-  logout() {
-    this.authService.logout();
   }
 }

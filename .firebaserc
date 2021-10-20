@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "caranty-store-d5d53": {
+      "hosting": {
+        "caranty-test": [
+          "caranty-store-d5d53"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "caranty-store-d5d53"
+  }
+}

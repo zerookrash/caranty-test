@@ -1,0 +1,60 @@
+<div class="row mt-4">
+  <div class="col-sm-12 col-md-5 align-self-center" id="col">
+    <div class="card m-4" id="card">
+      <div class="card-header">Featured</div>
+      <div class="card-body form">
+        <form [formGroup]="form" (ngSubmit)="save($event)">
+          <p class="cardInput">
+            <label for="title">Titulo</label>
+            <input
+              type="text"
+              id="title"
+              formControlName="title"
+              placeholder="Introduce la tarea..."
+            />
+          </p>
+          <!-- Validaciónes Titulo -->
+          <div *ngIf="titleField?.errors && titleField?.touched">
+            <div
+              *ngIf="titleField?.hasError('required')"
+              class="alert alert-danger"
+              role="alert"
+            >
+              El campo es requerido.
+            </div>
+          </div>
+          <p class="cardInput">
+            <label for="description">Descripción</label>
+            <textarea formControlName="text" cols="30" rows="3"></textarea>
+            {{ textField?.value.length }} / 80
+          </p>
+          <!-- Validaciónes descripción -->
+          <div *ngIf="textField?.errors && textField?.touched">
+            <div
+              *ngIf="textField?.hasError('required')"
+              class="alert alert-danger"
+              role="alert"
+            >
+              El campo es requerido.
+            </div>
+            <div
+              *ngIf="textField?.hasError('maxlength')"
+              class="alert alert-danger"
+              role="alert"
+            >
+              Máximo deben de haber 80 caracteres
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-outline-primary">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-7 align-self-center" id="col">
+    <div class="card" id="card">
+      <div class="card-header">Featured</div>
+      <div class="card-body"></div>
+    </div>
+  </div>
+</div>
